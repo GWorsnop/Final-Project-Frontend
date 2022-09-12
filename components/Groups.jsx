@@ -1,39 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { getAllGroups } from "../api";
-import { Text, view } from "react-native";
-import GroupListFilter from "./GroupListFilter";
-import GroupListGenerator from "./GroupListGenerator";
+import React, { useEffect, useState } from 'react';
+import { getAllGroups } from '../api';
+import { Text, View } from 'react-native';
+import GroupListGenerator from './GroupListGenerator';
 
 const Groups = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [groupList, setGroupList] = useEffect([]);
-  const [err, setErr] = useState(null);
+  const [ allGroups, setAllGroups ] = useState([]);
 
-  //   useEffect(() => {
-  //     setIsLoading(true);
-  //     getAllGroups()
-  //       .then((groups) => {
-  //         setErr(null);
-  //         setGroupList(groups);
-  //         setIsLoading(false);
-  //       })
-  //       .catch((err) =>
-  //         setErr(`${error.response.status} Groups ${error.response.statusText}`)
-  //       );
-  //   }, []);
-  //   console.log(groups, "<<<<<<<<<<<<<<");
-
-  if (isLoading) {
-    return <text>Fetching groups...</text>;
-  }
-
-  if (err) return <text>{err}</text>;
+  useEffect(() => {
+    getAllGroups()
+      .then((groupsFromApi) => {
+        setAllGroups(groupsFromApi);
+      })
+      .catch((err) => {
+        console.log('>>>> err', err);
+      });
+  }, []);
 
   return (
     <View>
-      <Text>HAAAAA</Text>
-      {/* <GroupListFilter />
-      <GroupListGenerator groupList={groupList} /> */}
+      <GroupListGenerator allGroups={allGroups} />
     </View>
   );
 };

@@ -1,7 +1,6 @@
-import axios from "axios";
-import Groups from "./components/Groups";
+import axios from 'axios';
 
-export function getEvents() {
+function getEvents() {
   return axios
     .get(`http://54.86.179.94:8080/api/events`)
     .then(({ data }) => {
@@ -12,8 +11,10 @@ export function getEvents() {
     });
 }
 
-export const getAllGroups = () => {
-  return axios.get("http://54.86.179.94:8080/api/groups").then(({ data }) => {
+function getAllGroups() {
+  return axios.get('http://54.86.179.94:8080/api/groups').then(({ data }) => {
     return data.groups;
   });
-};
+}
+
+module.exports = { getAllGroups, getEvents };

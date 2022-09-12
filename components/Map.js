@@ -1,3 +1,4 @@
+
 import { StatusBar } from "expo-status-bar";
 import MapView from "react-native-maps";
 import { StyleSheet, Text, View, Dimensions, Button } from "react-native";
@@ -6,7 +7,7 @@ import EventsButton from "./EventsButton";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-const Map = ({ navigation }) => {
+const Map = () => {
   return (
     <View style={{ flex: 1, backgroundColor: "#f3f3f3" }}>
       <MapView style={styles.map}>
@@ -46,4 +47,5 @@ const styles = StyleSheet.create({
     bottom: 100,
     // zIndex: 10,
   },
+
 });

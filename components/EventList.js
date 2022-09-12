@@ -9,7 +9,7 @@ const EventList = () => {
     <ScrollView>
       {events.map((event) => {
         return (
-          <View style={styles.container}>
+          <View style={styles.container} key={event._id}>
             <Text style={styles.title}>{event.title}</Text>
             <Text style={styles.description}>{event.description}</Text>
             <Text style={styles.startTime}>Start time: {event.startTime}</Text>

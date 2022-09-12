@@ -1,20 +1,18 @@
-import "react-native-gesture-handler";
-import Navbar from "./components/Navbar";
-import { EventContext } from "./contexts/EventsContext";
-import { useState, useEffect } from "react";
-import { getEvents } from "./api.js";
-import { NavigationContainer } from "@react-navigation/native";
+import 'react-native-gesture-handler';
+import { EventContext } from './contexts/EventsContext';
+import { useState, useEffect } from 'react';
+import { getEvents } from './api.js';
+import { NavigationContainer } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { Button, Text } from 'react-native';
-import Map from "./components/Map";
-import Groups from "./components/Groups";
+import { Text } from 'react-native';
+import Map from './components/Map';
+import Groups from './components/Groups';
 import Events from './Pages/Events';
 
 const Tab = createMaterialTopTabNavigator();
 
 export default function App() {
-  const [events, setEvents] = useState([]);
+  const [ events, setEvents ] = useState([]);
 
   useEffect(() => {
     getEvents()
