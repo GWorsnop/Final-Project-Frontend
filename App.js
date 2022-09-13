@@ -1,3 +1,4 @@
+
 import "react-native-gesture-handler";
 import { EventContext } from "./contexts/EventsContext";
 import { useState, useEffect } from "react";
@@ -31,6 +32,7 @@ export default function App() {
           style={{
             paddingTop: 70,
             textAlign: "center",
+
             fontSize: 30,
             fontWeight: "bold",
           }}
@@ -42,6 +44,7 @@ export default function App() {
           <Stack.Screen name="Home" component={MainPage} events={events} />
           <Stack.Screen name="Event Details" component={SingleEvent} />
           <Stack.Screen name="Group Details" component={SingleGroup} />
+
         </Stack.Navigator>
       </EventContext.Provider>
     </NavigationContainer>

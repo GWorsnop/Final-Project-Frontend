@@ -8,7 +8,7 @@ const MainPage = () => {
   const Tab = createMaterialTopTabNavigator();
 
   return (
-    <Tab.Navigator style={{ paddingTop: 20 }}>
+    <Tab.Navigator>
       <Tab.Screen name="Map View" component={Map} />
       <Tab.Screen name="Events" component={Events} />
       <Tab.Screen name="Groups" component={Groups} />
