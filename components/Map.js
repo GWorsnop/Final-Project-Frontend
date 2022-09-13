@@ -17,6 +17,8 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import Fontisto from "react-native-vector-icons/Fontisto";
 import { useContext } from "react";
 import { EventContext } from "../contexts/EventsContext";
+import { useNavigation } from "@react-navigation/native";
+import { format } from "date-fns";
 
 const { width, height } = Dimensions.get("window");
 const CARD_HEIGHT = 100;
@@ -25,6 +27,7 @@ const SPACING_FOR_CARD_INSET = width * 0.1 - 10;
 
 const Map = () => {
   const { events } = useContext(EventContext);
+  const navigation = useNavigation();
 
   const initialMapState = {
     categories: [
@@ -159,6 +162,8 @@ const Map = () => {
               },
             ],
           };
+          const date = format(new Date(event.startTime), "d MMM yyyy");
+          const start_time = format(new Date(event.startTime), "h:mm bbb");
           return (
             <MapView.Marker
               key={index}
@@ -168,7 +173,7 @@ const Map = () => {
               }}
               onPress={(e) => onMarkerPress(e)}
               title={event.title}
-              description={event.startTime}
+              description={`${date} - ${start_time}`}
             >
               <Animated.View style={[styles.markerWrap]}>
                 <Animated.Image
@@ -248,7 +253,9 @@ const Map = () => {
               </Text>
               <View style={styles.button}>
                 <TouchableOpacity
-                  onPress={() => {}}
+                  onPress={() => {
+                    navigation.navigate("Event Details", { _id: event._id });
+                  }}
                   style={[
                     styles.signIn,
                     {

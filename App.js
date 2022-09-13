@@ -12,7 +12,6 @@ import Groups from "./components/Groups";
 import Map from "./components/Map";
 import Events from "./Pages/Events";
 
-
 const Stack = createNativeStackNavigator();
 
 export default function App() {
@@ -43,10 +42,14 @@ export default function App() {
         </Text>
         {/* <Navbar /> */}
         <Stack.Navigator>
-          <Stack.Screen name="Home" component={MainPage} events={events} />
+          <Stack.Screen
+            name="Home"
+            component={MainPage}
+            events={events}
+            options={{ headerShown: false }}
+          />
           <Stack.Screen name="Event Details" component={SingleEvent} />
           <Stack.Screen name="Group Details" component={SingleGroup} />
-
         </Stack.Navigator>
       </EventContext.Provider>
     </NavigationContainer>
