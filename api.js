@@ -41,5 +41,23 @@ function getEventMessages(id) {
     });
 }
 
-module.exports = { getAllGroups, getEvents, getSingleEvent, getEventMessages, getGroupByID };
+function getCoordsFromLocation(location) {
+  const formattedLocation = location.split(" ").join("+");
 
+  return axios
+    .get(
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${formattedLocation}&key=AIzaSyDkZo9JU6svrMrX5j5MXQcn0O6cxEOvZZM`
+    )
+    .then(({ data }) => {
+      return data.results[0].geometry.location;
+    });
+}
+
+module.exports = {
+  getAllGroups,
+  getEvents,
+  getSingleEvent,
+  getEventMessages,
+  getGroupByID,
+  getCoordsFromLocation,
+};
