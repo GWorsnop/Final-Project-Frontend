@@ -1,10 +1,17 @@
 import React from 'react';
 import { useContext } from 'react';
-import { StyleSheet, ScrollView, View, Text } from 'react-native';
+import { StyleSheet, ScrollView, View, Text, Button } from 'react-native';
 import { EventContext } from '../contexts/EventsContext';
+import { useNavigation } from '@react-navigation/native';
+import { format } from 'date-fns';
 
 const EventList = () => {
   const { events } = useContext(EventContext);
+
+  // const start_time = format(new Date(events.startTime), 'MM/dd/yyyy');
+
+  const navigation = useNavigation();
+
   return (
     <ScrollView>
       {events.map((event) => {
@@ -16,6 +23,11 @@ const EventList = () => {
             <Text style={styles.endTime}>End time: {event.endTime}</Text>
             <Text style={styles.location}>{event.location}</Text>
             <Text style={''}>{event.attendees}</Text>
+            <Button
+              title="View Event"
+              onPress={() =>
+                navigation.navigate('Event Details', { _id: event._id })}
+            />
           </View>
         );
       })}
