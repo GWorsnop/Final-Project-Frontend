@@ -1,9 +1,10 @@
 import React from 'react';
 import { useContext } from 'react';
-import { StyleSheet, ScrollView, View, Text } from 'react-native';
+import { StyleSheet, ScrollView, View, Text, Button } from 'react-native';
+import { Link } from 'react-router-native';
 import { EventContext } from '../contexts/EventsContext';
 
-const EventList = () => {
+const EventList = ({ navigation }) => {
   const { events } = useContext(EventContext);
   return (
     <ScrollView>
@@ -16,6 +17,11 @@ const EventList = () => {
             <Text style={styles.endTime}>End time: {event.endTime}</Text>
             <Text style={styles.location}>{event.location}</Text>
             <Text style={''}>{event.attendees}</Text>
+            <Button
+              title="View Event"
+              onPress={() =>
+                navigation.navigate('Event Details', { _id: event._id })}
+            />
           </View>
         );
       })}

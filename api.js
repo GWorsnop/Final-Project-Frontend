@@ -17,4 +17,12 @@ function getAllGroups() {
   });
 }
 
-module.exports = { getAllGroups, getEvents };
+function getSingleEvent(id) {
+  return axios
+    .get(`http://54.86.179.94:8080/api/events/${id}`)
+    .then(({ data }) => {
+      return data.event;
+    });
+}
+
+module.exports = { getAllGroups, getEvents, getSingleEvent };
