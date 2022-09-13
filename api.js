@@ -1,4 +1,5 @@
 import axios from "axios";
+import key from "./maps_key";
 
 function getEvents() {
   return axios
@@ -46,7 +47,7 @@ function getCoordsFromLocation(location) {
 
   return axios
     .get(
-      `https://maps.googleapis.com/maps/api/geocode/json?address=${formattedLocation}&key=AIzaSyDkZo9JU6svrMrX5j5MXQcn0O6cxEOvZZM`
+      `https://maps.googleapis.com/maps/api/geocode/json?address=${formattedLocation}&key=${key}`
     )
     .then(({ data }) => {
       return data.results[0].geometry.location;

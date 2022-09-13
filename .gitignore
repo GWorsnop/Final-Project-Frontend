@@ -10,5 +10,6 @@ npm-debug.*
 *.orig.*
 web-build/
 
+maps_key.js
 # macOS
 .DS_Store
