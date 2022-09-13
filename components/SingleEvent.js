@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { getSingleEvent } from '../api';
 import { View, Text, StyleSheet } from 'react-native';
+import { format } from 'date-fns';
 
 const SingleEvent = ({ route }) => {
   const [ event, setEvent ] = useState({});

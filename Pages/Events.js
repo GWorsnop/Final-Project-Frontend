@@ -1,10 +1,10 @@
 import { View } from 'react-native';
 import EventList from '../components/EventList';
 
-const Events = ({ navigation }) => {
+const Events = () => {
   return (
     <View>
-      <EventList navigation={navigation} />
+      <EventList />
     </View>
   );
 };

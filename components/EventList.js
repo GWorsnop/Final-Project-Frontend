@@ -1,11 +1,17 @@
 import React from 'react';
 import { useContext } from 'react';
 import { StyleSheet, ScrollView, View, Text, Button } from 'react-native';
-import { Link } from 'react-router-native';
 import { EventContext } from '../contexts/EventsContext';
+import { useNavigation } from '@react-navigation/native';
+import { format } from 'date-fns';
 
-const EventList = ({ navigation }) => {
+const EventList = () => {
   const { events } = useContext(EventContext);
+
+  // const start_time = format(new Date(events.startTime), 'MM/dd/yyyy');
+
+  const navigation = useNavigation();
+
   return (
     <ScrollView>
       {events.map((event) => {
