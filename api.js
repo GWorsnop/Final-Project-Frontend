@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from "axios";
 
 function getEvents() {
   return axios
@@ -12,9 +12,34 @@ function getEvents() {
 }
 
 function getAllGroups() {
-  return axios.get('http://54.86.179.94:8080/api/groups').then(({ data }) => {
+  return axios.get("http://54.86.179.94:8080/api/groups").then(({ data }) => {
     return data.groups;
   });
 }
 
-module.exports = { getAllGroups, getEvents };
+function getSingleEvent(id) {
+  return axios
+    .get(`http://54.86.179.94:8080/api/events/${id}`)
+    .then(({ data }) => {
+      return data.event;
+    });
+}
+
+function getGroupByID(id) {
+  return axios
+    .get(`http://54.86.179.94:8080/api/groups/${id}`)
+    .then(({ data }) => {
+      return data.group;
+    });
+}
+
+function getEventMessages(id) {
+  return axios
+    .get(`http://54.86.179.94:8080/api/event-messages/events/${id}`)
+    .then(({ data }) => {
+      return data.messages;
+    });
+}
+
+module.exports = { getAllGroups, getEvents, getSingleEvent, getEventMessages, getGroupByID };
+

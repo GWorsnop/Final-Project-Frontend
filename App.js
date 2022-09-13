@@ -3,13 +3,17 @@ import { EventContext } from "./contexts/EventsContext";
 import { useState, useEffect } from "react";
 import { getEvents } from "./api.js";
 import { NavigationContainer } from "@react-navigation/native";
-import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Text } from "react-native";
-import Map from "./components/Map";
+import SingleEvent from "./components/SingleEvent";
+import MainPage from "./Pages/MainPage";
+import SingleGroup from "./components/SingleGroup";
 import Groups from "./components/Groups";
+import Map from "./components/Map";
 import Events from "./Pages/Events";
 
-const Tab = createMaterialTopTabNavigator();
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   const [events, setEvents] = useState([]);
@@ -38,11 +42,12 @@ export default function App() {
           UpMeet
         </Text>
         {/* <Navbar /> */}
-        <Tab.Navigator style={{ paddingTop: 20 }}>
-          <Tab.Screen name="Map View" component={Map} />
-          <Tab.Screen name="Events" component={Events} />
-          <Tab.Screen name="Groups" component={Groups} />
-        </Tab.Navigator>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={MainPage} events={events} />
+          <Stack.Screen name="Event Details" component={SingleEvent} />
+          <Stack.Screen name="Group Details" component={SingleGroup} />
+
+        </Stack.Navigator>
       </EventContext.Provider>
     </NavigationContainer>
   );
