@@ -8,19 +8,24 @@ import { format } from 'date-fns';
 const EventList = () => {
   const { events } = useContext(EventContext);
 
-  // const start_time = format(new Date(events.startTime), 'MM/dd/yyyy');
-
   const navigation = useNavigation();
 
   return (
     <ScrollView>
       {events.map((event) => {
+        const start_time = format(
+          new Date(event.startTime),
+          'd MMM yyyy - h:mm bbb'
+        );
+        const end_time = format(
+          new Date(event.endTime),
+          'd MMM yyyy - h:mm bbb'
+        );
         return (
           <View style={styles.container} key={event._id}>
             <Text style={styles.title}>{event.title}</Text>
-            <Text style={styles.description}>{event.description}</Text>
-            <Text style={styles.startTime}>Start time: {event.startTime}</Text>
-            <Text style={styles.endTime}>End time: {event.endTime}</Text>
+            <Text style={styles.startTime}>Start time: {start_time}</Text>
+            <Text style={styles.endTime}>End time: {end_time}</Text>
             <Text style={styles.location}>{event.location}</Text>
             <Text style={''}>{event.attendees}</Text>
             <Button
