@@ -1,4 +1,3 @@
-
 import "react-native-gesture-handler";
 import { EventContext } from "./contexts/EventsContext";
 import { useState, useEffect } from "react";
@@ -9,6 +8,10 @@ import { Text } from "react-native";
 import SingleEvent from "./components/SingleEvent";
 import MainPage from "./Pages/MainPage";
 import SingleGroup from "./components/SingleGroup";
+import Groups from "./components/Groups";
+import Map from "./components/Map";
+import Events from "./Pages/Events";
+
 
 const Stack = createNativeStackNavigator();
 
@@ -32,7 +35,6 @@ export default function App() {
           style={{
             paddingTop: 70,
             textAlign: "center",
-
             fontSize: 30,
             fontWeight: "bold",
           }}
