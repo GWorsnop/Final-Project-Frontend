@@ -13,20 +13,17 @@ const EventList = () => {
   return (
     <ScrollView>
       {events.map((event) => {
-        const start_time = format(
-          new Date(event.startTime),
-          'd MMM yyyy - h:mm bbb'
-        );
-        const end_time = format(
-          new Date(event.endTime),
-          'd MMM yyyy - h:mm bbb'
-        );
+        const date = format(new Date(event.startTime), 'd MMM yyyy');
+        const start_time = format(new Date(event.startTime), 'h:mm bbb');
+        const end_time = format(new Date(event.endTime), 'h:mm bbb');
         return (
           <View style={styles.container} key={event._id}>
             <Text style={styles.title}>{event.title}</Text>
-            <Text style={styles.startTime}>Start time: {start_time}</Text>
-            <Text style={styles.endTime}>End time: {end_time}</Text>
             <Text style={styles.location}>{event.location}</Text>
+            <Text style={styles.startTime}>Date: {date}</Text>
+            <Text style={styles.startTime}>
+              Times: {start_time} - {end_time}
+            </Text>
             <Text style={''}>{event.attendees}</Text>
             <Button
               title="View Event"
@@ -76,10 +73,16 @@ const styles = StyleSheet.create({
     paddingBottom: 5
   },
   location: {
-    fontSize: 15,
+    fontSize: 13,
     paddingLeft: 10,
     paddingTop: 10,
     paddingBottom: 5,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    textTransform: 'uppercase'
+  },
+  btn: {
+    color: 'orange',
+    fontSize: 40,
+    padding: 30
   }
 });
