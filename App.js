@@ -7,6 +7,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Text } from 'react-native';
 import SingleEvent from './components/SingleEvent';
 import MainPage from './Pages/MainPage';
+// import SingleGroup from './components/SingleGroup';
 
 const Stack = createNativeStackNavigator();
 
@@ -29,6 +30,7 @@ export default function App() {
         <Text
           style={{
             paddingTop: 70,
+            paddingBottom: 20,
             textAlign: 'center',
             fontSize: 30,
             fontWeight: 'bold'
@@ -39,6 +41,7 @@ export default function App() {
         <Stack.Navigator>
           <Stack.Screen name="Home" component={MainPage} events={events} />
           <Stack.Screen name="Event Details" component={SingleEvent} />
+          {/* <Stack.Screen name="Group Details" component={SingleGroup} /> */}
         </Stack.Navigator>
       </EventContext.Provider>
     </NavigationContainer>
